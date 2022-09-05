@@ -32,14 +32,12 @@ public class PropertyController {
 
     @PostMapping("/property")
     public ResponseEntity<Void> insert(Property property) {
-        // TODO: Property attributes must be validated
         propertyService.insert(property);
         return ResponseEntity.ok().build();
     }
 
     @PutMapping("/property")
     public ResponseEntity<Void> update(Property property) {
-        // TODO: Property attributes must be validated
         propertyService.update(property);
         return ResponseEntity.ok().build();
     }

@@ -7,10 +7,10 @@ import java.util.Set;
 @Mapper
 public interface AddressMapper {
 
-    public void insert(Address address);
+    void insert(Address address);
 
-    public Set<Address> search();
+    Set<Address> search();
 
-    public Address findById(Integer id);
+    Address findById(Integer id);
 
 }

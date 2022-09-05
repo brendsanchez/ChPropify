@@ -7,13 +7,13 @@ import java.util.Set;
 @Mapper
 public interface PropertyMapper {
 
-    public void insert(Property property);
+    void insert(Property property);
 
-    public Set<Property> search(String minRentPrice, String maxRentPrice);
+    Set<Property> search(String minRentPrice, String maxRentPrice);
 
-    public Property findById(Integer id);
+    Property findById(Integer id);
 
-    public void update(Property property);
+    void update(Property property);
 
-    public void delete(Integer id);
+    void delete(Integer id);
 }

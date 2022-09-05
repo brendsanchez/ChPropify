@@ -20,3 +20,7 @@ mvn flyway:migrate
 ```
 
 If you are not familiar with Flyway migrations, the database seed is `src/main/resources/db/migration/V1__baseline.sql`.
+
+
+comments about code => 
+* se usa el encapsulamiento ya que los atributos estaban expuesto

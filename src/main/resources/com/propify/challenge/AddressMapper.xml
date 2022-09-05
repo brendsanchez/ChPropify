@@ -3,7 +3,7 @@
 <mapper namespace="com.propify.challenge.AddressMapper">
 
     <insert id="insert">
-INSERT INTO address ...
+INSERT INTO address (property_type, rent_price, email_address, create_time, code) VALUES (#{type}, #{rentPrice}, #{emailAddress}, #{createTime} ,#{code});
     </insert>
 
     <select id="search" resultType="com.propify.challenge.Address">

@@ -1,10 +1,13 @@
 package com.propify.challenge;
 
+import com.propify.challenge.exception.NotValidException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
+
+import static java.util.Objects.isNull;
 
 @Service
 @EnableAutoConfiguration
@@ -33,17 +36,21 @@ public class PropertyService {
 
     public void insert(Property property) {
         propertyMapper.insert(property);
-        System.out.println("CREATED: " + property.getId());
+        log.info("CREATED: {}", property.getId());
     }
 
-    public void update(Property property) {
+    public void update(Property property) throws NotValidException {
+        if (isNull(property.getId())) {
+            throw new NotValidException("id is required");
+        }
+
         propertyMapper.update(property);
-        System.out.println("UPDATED: " + property.getId());
+        log.info("UPDATED: {}", property.getId());
     }
 
     public void delete(int id) {
         propertyMapper.delete(id);
-        System.out.println("DELETED: " + id);
+        log.info("DELETED: {}", id);
 
         alertService.sendPropertyDeletedAlert(id);
         // TODO: Sending the alert should be non-blocking (asynchronous)
