@@ -60,10 +60,10 @@ public class PropertyReport {
     // to anything state
     // todo not works by address is empty
     private Integer quantifyBy(Collection<Property> properties, String state) {
-        /*long value = properties.stream()
+        long value = properties.stream()
                 .filter(p -> state.equalsIgnoreCase(p.getAddress().getState()))
                 .count();
-*/
-        return -1; //Math.toIntExact(value);
+
+        return Math.toIntExact(value);
     }
 }

@@ -102,7 +102,7 @@ public class PropertyServiceTest {
 
         assertEquals(result, serviceMock.getQuantityPerType());
         assertEquals(35.50, serviceMock.getAverageRentPrice());
-        //assertEquals(2, serviceMock.getIllinoisQuantity());
+        assertEquals(2, serviceMock.getIllinoisQuantity());
         assertEquals(3, serviceMock.getTotalQuantity());
     }
 }
