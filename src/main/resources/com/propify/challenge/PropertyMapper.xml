@@ -2,24 +2,38 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.propify.challenge.PropertyMapper">
 
-    <insert id="insert">
-INSERT INTO property (rent_price) VALUES (#{rentPrice});
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id" keyColumn="id">
+INSERT INTO property (property_type, rent_price, email_address, create_time, code) VALUES (#{type}, #{rentPrice}, #{emailAddress}, #{createTime} ,#{code});
     </insert>
 
     <update id="update">
-UPDATE property ...
+UPDATE property SET
+property_type= #{type},
+rent_price=#{rentPrice},
+email_address=#{emailAddress},
+create_time=#{createTime},
+code=#{code}
     </update>
 
     <delete id="delete">
-DELETE FROM property ...
+DELETE FROM property WHERE id = #{id}
     </delete>
 
-    <select id="search" resultType="com.propify.challenge.Property">
-SELECT * FROM property;
+    <select id="search" resultMap="searchProperty">
+SELECT * FROM property WHERE rent_price &gt;= #{minRentPrice} AND rent_price &lt;= #{maxRentPrice};
     </select>
 
-    <select id="findById" resultType="com.propify.challenge.Property">
+    <select id="findById" resultMap="searchProperty">
 SELECT * FROM property WHERE id = #{id};
     </select>
 
+    <resultMap id="searchProperty" type="com.propify.challenge.Property">
+        <result property="id" column="id"></result>
+        <result property="createTime" column="create_time"></result>
+        <result property="type" column="property_type"></result>
+        <result property="rentPrice" column="rent_price"></result>
+        <!--result property="address" column="address"></result-->
+        <result property="emailAddress" column="email_address"></result>
+        <result property="code" column="code"></result>
+    </resultMap>
 </mapper>
