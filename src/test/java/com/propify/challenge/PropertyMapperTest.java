@@ -21,13 +21,13 @@ import org.springframework.test.context.support.DependencyInjectionTestExecution
 public class PropertyMapperTest {
 
     @Autowired
-    PropertyMapper propertyMapper;
+    private PropertyMapper propertyMapper;
 
     @Test
     public void testInsert() {
-        var property = new Property();
-        property.rentPrice = 3000.99;
-        property.type = PropertyType.MULTI_FAMILY;
+        Property property = new Property();
+        property.setRentPrice(3000.99);
+        property.setType(PropertyType.MULTI_FAMILY);
 
         propertyMapper.insert(property);
 

@@ -6,6 +6,7 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
+import java.util.Set;
 
 import static java.util.Objects.isNull;
 
@@ -13,6 +14,7 @@ import static java.util.Objects.isNull;
 @EnableAutoConfiguration
 @Slf4j
 public class PropertyService {
+    private static final String STATE_IL = "IL";
 
     private final PropertyMapper propertyMapper;
 
@@ -58,21 +60,7 @@ public class PropertyService {
     }
 
     public PropertyReport propertyReport() {
-        var allProperties = propertyMapper.search(null, null);
-        var propertyReport = new PropertyReport();
-
-        // Calculate total quantity
-        // propertyReport.totalQuantity =
-
-        // Calculate the quantity of each type, 0 if there is no properties.
-        // propertyReport.quantityPerType =
-
-        // Calculate the average rent price (exclude the properties without rent price or with rent price = 0)
-        // propertyReport.averageRentPrice =
-
-        // Calculate the quantity of properties in the state of Illinois (IL)
-        // propertyReport.illinoisQuantity =
-
-        return propertyReport;
+        Set<Property> allProperties = propertyMapper.search(null, null);
+        return new PropertyReport(allProperties, STATE_IL);
     }
 }

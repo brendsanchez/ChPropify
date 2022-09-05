@@ -9,13 +9,13 @@ import org.mockito.junit.jupiter.MockitoExtension;
 @ExtendWith(MockitoExtension.class)
 public class PropertyServiceTest {
 
-    PropertyService propertyService;
+    private PropertyService propertyService;
 
-    PropertyMapper propertyMapper;
+    private PropertyMapper propertyMapper;
 
-    AddressMapper addressMapper;
+    private AddressMapper addressMapper;
 
-    AlertService alertService;
+    private AlertService alertService;
 
     // TODO: add at least 3 tests to the method propertyService.propertyReport()
     @Test

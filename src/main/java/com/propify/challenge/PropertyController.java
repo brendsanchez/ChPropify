@@ -1,5 +1,6 @@
 package com.propify.challenge;
 
+import com.propify.challenge.exception.NotValidException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -37,7 +38,7 @@ public class PropertyController {
     }
 
     @PutMapping("/property")
-    public ResponseEntity<Void> update(Property property) {
+    public ResponseEntity<Void> update(Property property) throws NotValidException {
         propertyService.update(property);
         return ResponseEntity.ok().build();
     }
