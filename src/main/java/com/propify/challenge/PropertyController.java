@@ -1,36 +1,57 @@
 package com.propify.challenge;
 
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RestController;
+
 import java.util.Collection;
 
+@RestController
 public class PropertyController {
 
-    PropertyService propertyService;
+    private final PropertyService propertyService;
+
+    public PropertyController(PropertyService propertyService) {
+        this.propertyService = propertyService;
+    }
 
     // API endpoints for CRUD operations on entities of type Property
-
-    public Collection<Property> search(String minRentPrice, String maxRentPrice) {
-        return propertyService.search(minRentPrice, maxRentPrice);
+    @GetMapping("/properties")
+    public ResponseEntity<Collection<Property>> search(String minRentPrice, String maxRentPrice) {
+        return ResponseEntity.ok().body(propertyService.search(minRentPrice, maxRentPrice));
     }
 
-    public Property findById(int id) {
-        return propertyService.findById(id);
+    @GetMapping("property/{id}")
+    public ResponseEntity<Property> findById(@PathVariable("id") int id) {
+        return ResponseEntity.ok().body(propertyService.findById(id));
     }
 
-    public void insert(Property property) {
+    @PostMapping("/property")
+    public ResponseEntity<Void> insert(Property property) {
         // TODO: Property attributes must be validated
         propertyService.insert(property);
+        return ResponseEntity.ok().build();
     }
 
-    public void update(Property property) {
+    @PutMapping("/property")
+    public ResponseEntity<Void> update(Property property) {
         // TODO: Property attributes must be validated
         propertyService.update(property);
+        return ResponseEntity.ok().build();
     }
 
-    public void delete(int id) {
+    @DeleteMapping("/property/{id}")
+    public ResponseEntity<Void>  delete(@PathVariable("id") int id) {
         propertyService.delete(id);
+        return ResponseEntity.ok().build();
     }
 
-    public PropertyReport report() {
-        return propertyService.propertyReport();
+    @GetMapping("/properties/report")
+    public ResponseEntity<PropertyReport> report() {
+        return ResponseEntity.ok().body(propertyService.propertyReport());
     }
 }

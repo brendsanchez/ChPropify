@@ -1,14 +1,27 @@
 package com.propify.challenge;
 
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.stereotype.Service;
+
 import java.util.Collection;
 
+@Service
+@EnableAutoConfiguration
+@Slf4j
 public class PropertyService {
 
-    PropertyMapper propertyMapper;
+    private final PropertyMapper propertyMapper;
 
-    AddressMapper addressMapper;
+    private final AddressMapper addressMapper;
 
-    AlertService alertService;
+    private final AlertService alertService;
+
+    public PropertyService(PropertyMapper propertyMapper, AddressMapper addressMapper, AlertService alertService) {
+        this.propertyMapper = propertyMapper;
+        this.addressMapper = addressMapper;
+        this.alertService = alertService;
+    }
 
     public Collection<Property> search(String minRentPrice, String maxRentPrice) {
         return propertyMapper.search(minRentPrice, maxRentPrice);
@@ -20,12 +33,12 @@ public class PropertyService {
 
     public void insert(Property property) {
         propertyMapper.insert(property);
-        System.out.println("CREATED: " + property.id);
+        System.out.println("CREATED: " + property.getId());
     }
 
     public void update(Property property) {
         propertyMapper.update(property);
-        System.out.println("UPDATED: " + property.id);
+        System.out.println("UPDATED: " + property.getId());
     }
 
     public void delete(int id) {
