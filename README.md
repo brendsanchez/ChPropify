@@ -28,3 +28,5 @@ comments about code =>
 * validations in class Property by annotations
 * calculations inside PropertyReport's class
 * service class unit tests because that is where the main logic is
+* creating packages for file types
+* create handlerException 

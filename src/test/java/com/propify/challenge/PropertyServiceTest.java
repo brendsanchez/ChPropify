@@ -1,6 +1,7 @@
 package com.propify.challenge;
 
 import com.propify.challenge.enums.PropertyType;
+import com.propify.challenge.exception.GeneralException;
 import com.propify.challenge.exception.NotValidException;
 import com.propify.challenge.model.Address;
 import com.propify.challenge.model.Property;
@@ -70,7 +71,7 @@ public class PropertyServiceTest {
 
     @Test
     @DisplayName("when price valid")
-    void testPriceValid() throws NotValidException {
+    void testPriceValid() throws GeneralException {
         property = Property.builder()
                 .rentPrice(29.99)
                 .build();

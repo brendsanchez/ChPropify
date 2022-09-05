@@ -1,11 +1,12 @@
 package com.propify.challenge.service;
 
+import com.propify.challenge.exception.GeneralException;
+import com.propify.challenge.exception.NotFoundException;
 import com.propify.challenge.exception.NotValidException;
 import com.propify.challenge.model.Property;
 import com.propify.challenge.model.PropertyReport;
 import com.propify.challenge.persistence.AddressMapper;
 import com.propify.challenge.persistence.PropertyMapper;
-import com.propify.challenge.service.AlertService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.stereotype.Service;
@@ -38,11 +39,17 @@ public class PropertyService {
         return propertyMapper.search(minRentPrice, maxRentPrice);
     }
 
-    public Property findById(int id) {
-        return propertyMapper.findById(id);
+    public Property findById(int id) throws GeneralException {
+        Property propertyFound = propertyMapper.findById(id);
+
+        if (isNull(propertyFound)) {
+            throw new NotFoundException("It was not found by id: " + id);
+        }
+
+        return propertyFound;
     }
 
-    public void insert(Property property) throws NotValidException {
+    public void insert(Property property) throws GeneralException {
         int scale = BigDecimal.valueOf(property.getRentPrice()).scale();
 
         if (scale > 2) {
@@ -53,7 +60,7 @@ public class PropertyService {
         log.info("CREATED: {}", property.getId());
     }
 
-    public void update(Property property) throws NotValidException {
+    public void update(Property property) throws GeneralException {
         if (isNull(property.getId())) {
             throw new NotValidException("id is required");
         }

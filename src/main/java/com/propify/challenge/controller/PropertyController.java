@@ -1,5 +1,6 @@
 package com.propify.challenge.controller;
 
+import com.propify.challenge.exception.GeneralException;
 import com.propify.challenge.model.Property;
 import com.propify.challenge.model.PropertyReport;
 import com.propify.challenge.service.PropertyService;
@@ -33,18 +34,18 @@ public class PropertyController {
     }
 
     @GetMapping("property/{id}")
-    public ResponseEntity<Property> findById(@PathVariable("id") int id) {
+    public ResponseEntity<Property> findById(@PathVariable("id") int id) throws GeneralException {
         return ResponseEntity.ok().body(propertyService.findById(id));
     }
 
     @PostMapping("/property")
-    public ResponseEntity<Void> insert(@Valid @RequestBody Property property) throws NotValidException {
+    public ResponseEntity<Void> insert(@Valid @RequestBody Property property) throws GeneralException {
         propertyService.insert(property);
         return ResponseEntity.ok().build();
     }
 
     @PutMapping("/property")
-    public ResponseEntity<Void> update(@RequestBody Property property) throws NotValidException {
+    public ResponseEntity<Void> update(@RequestBody Property property) throws GeneralException {
         propertyService.update(property);
         return ResponseEntity.ok().build();
     }
