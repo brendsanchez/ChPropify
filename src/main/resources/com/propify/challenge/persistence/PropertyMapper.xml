@@ -20,7 +20,10 @@ DELETE FROM property WHERE id = #{id}
     </delete>
 
     <select id="search" resultMap="searchProperty">
-SELECT * FROM property WHERE rent_price &gt;= #{minRentPrice} AND rent_price &lt;= #{maxRentPrice};
+SELECT * FROM property
+    <if test="minRentPrice != null and maxRentPrice != null">
+        WHERE rent_price &gt;= #{minRentPrice} AND rent_price &lt;= #{maxRentPrice};
+    </if>
     </select>
 
     <select id="findById" resultMap="searchProperty">

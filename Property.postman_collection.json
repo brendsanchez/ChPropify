@@ -1,0 +1,154 @@
+{
+	"info": {
+		"_postman_id": "0b581a62-6806-4301-8bfd-da90f895cdc4",
+		"name": "Property",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "/property/{id}",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/property/17",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"property",
+						"17"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/properties",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/properties?minRentPrice=100&maxRentPrice=8000",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"properties"
+					],
+					"query": [
+						{
+							"key": "minRentPrice",
+							"value": "100"
+						},
+						{
+							"key": "maxRentPrice",
+							"value": "8000"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/properties/report",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/properties/report",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"properties",
+						"report"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/property",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\":12,\n    \"type\": \"SINGLE_FAMILY\" ,\n    \"rentPrice\": 500.0,\n    \"emailAddress\": \"999999@gmail.com\",\n    \"code\":\"IL\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/property",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"property"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/property",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"type\": \"SINGLE_FAMILY\" ,\n    \"rentPrice\": 500.0,\n    \"emailAddress\": \"brend@gmail.com\",\n    \"code\":\"IL\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/property",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"property"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/property/{id}",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/property/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"property",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -40,7 +40,6 @@ public class PropertyServiceTest {
     @Mock
     private AlertService alertService;
 
-    // TODO: add at least 3 tests to the method propertyService.propertyReport()
     @BeforeEach
     void init() {
         Property propertyIl1 = Property.builder()
@@ -89,7 +88,7 @@ public class PropertyServiceTest {
     }
 
     @Test
-    void testPropertyReport() {
+    void testPropertyReport() throws GeneralException {
         Map<PropertyType, Integer> result = Map.ofEntries(
                 Map.entry(PropertyType.SINGLE_FAMILY, 2),
                 Map.entry(PropertyType.CONDOMINIUM, 1),

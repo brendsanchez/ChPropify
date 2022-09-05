@@ -58,11 +58,12 @@ public class PropertyReport {
 
     // Calculate the quantity of properties in the state of Illinois (IL)
     // to anything state
+    // todo not works by address is empty
     private Integer quantifyBy(Collection<Property> properties, String state) {
-        long value = properties.stream()
+        /*long value = properties.stream()
                 .filter(p -> state.equalsIgnoreCase(p.getAddress().getState()))
                 .count();
-
-        return Math.toIntExact(value);
+*/
+        return -1; //Math.toIntExact(value);
     }
 }

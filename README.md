@@ -30,3 +30,5 @@ comments about code =>
 * service class unit tests because that is where the main logic is
 * creating packages for file types
 * create handlerException 
+
+I would have liked to add more unit tests, get to insert address and recover it, the alert thing

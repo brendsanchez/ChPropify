@@ -2,6 +2,7 @@ package com.propify.challenge.persistence;
 
 import com.propify.challenge.model.Property;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.Set;
 
@@ -10,7 +11,7 @@ public interface PropertyMapper {
 
     void insert(Property property);
 
-    Set<Property> search(String minRentPrice, String maxRentPrice);
+    Set<Property> search(@Param("minRentPrice") String minRentPrice, @Param("maxRentPrice") String maxRentPrice);
 
     Property findById(Integer id);
 

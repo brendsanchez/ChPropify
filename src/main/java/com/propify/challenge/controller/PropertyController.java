@@ -57,7 +57,7 @@ public class PropertyController {
     }
 
     @GetMapping("/properties/report")
-    public ResponseEntity<PropertyReport> report() {
+    public ResponseEntity<PropertyReport> report() throws GeneralException {
         return ResponseEntity.ok().body(propertyService.propertyReport());
     }
 }

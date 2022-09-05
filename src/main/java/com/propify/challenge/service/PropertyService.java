@@ -78,8 +78,13 @@ public class PropertyService {
         //  Extra points for only sending the alert when/if the transaction is committed
     }
 
-    public PropertyReport propertyReport() {
+    public PropertyReport propertyReport() throws GeneralException {
         Set<Property> allProperties = propertyMapper.search(null, null);
+
+        if (allProperties.isEmpty()){
+            throw new NotFoundException("not found properties");
+        }
+
         return new PropertyReport(allProperties, STATE_IL);
     }
 }
