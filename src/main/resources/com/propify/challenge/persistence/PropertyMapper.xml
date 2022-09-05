@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.propify.challenge.PropertyMapper">
+<mapper namespace="com.propify.challenge.persistence.PropertyMapper">
 
     <insert id="insert" useGeneratedKeys="true" keyProperty="id" keyColumn="id">
 INSERT INTO property (property_type, rent_price, email_address, create_time, code) VALUES (#{type}, #{rentPrice}, #{emailAddress}, #{createTime} ,#{code});
@@ -27,7 +27,7 @@ SELECT * FROM property WHERE rent_price &gt;= #{minRentPrice} AND rent_price &lt
 SELECT * FROM property WHERE id = #{id};
     </select>
 
-    <resultMap id="searchProperty" type="com.propify.challenge.Property">
+    <resultMap id="searchProperty" type="com.propify.challenge.model.Property">
         <result property="id" column="id"></result>
         <result property="createTime" column="create_time"></result>
         <result property="type" column="property_type"></result>

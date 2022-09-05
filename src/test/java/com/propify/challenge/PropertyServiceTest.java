@@ -1,6 +1,14 @@
 package com.propify.challenge;
 
+import com.propify.challenge.enums.PropertyType;
 import com.propify.challenge.exception.NotValidException;
+import com.propify.challenge.model.Address;
+import com.propify.challenge.model.Property;
+import com.propify.challenge.model.PropertyReport;
+import com.propify.challenge.persistence.AddressMapper;
+import com.propify.challenge.persistence.PropertyMapper;
+import com.propify.challenge.service.AlertService;
+import com.propify.challenge.service.PropertyService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

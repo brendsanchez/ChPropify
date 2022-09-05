@@ -1,5 +1,6 @@
-package com.propify.challenge;
+package com.propify.challenge.model;
 
+import com.propify.challenge.enums.PropertyType;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;

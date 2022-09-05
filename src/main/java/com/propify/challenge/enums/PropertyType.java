@@ -1,4 +1,4 @@
-package com.propify.challenge;
+package com.propify.challenge.enums;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

@@ -1,4 +1,4 @@
-package com.propify.challenge;
+package com.propify.challenge.service;
 
 import org.springframework.stereotype.Service;
 

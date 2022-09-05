@@ -1,6 +1,11 @@
-package com.propify.challenge;
+package com.propify.challenge.service;
 
 import com.propify.challenge.exception.NotValidException;
+import com.propify.challenge.model.Property;
+import com.propify.challenge.model.PropertyReport;
+import com.propify.challenge.persistence.AddressMapper;
+import com.propify.challenge.persistence.PropertyMapper;
+import com.propify.challenge.service.AlertService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.stereotype.Service;
