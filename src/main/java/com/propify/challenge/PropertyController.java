@@ -32,7 +32,7 @@ public class PropertyController {
     }
 
     @PostMapping("/property")
-    public ResponseEntity<Void> insert(Property property) {
+    public ResponseEntity<Void> insert(Property property) throws NotValidException {
         propertyService.insert(property);
         return ResponseEntity.ok().build();
     }

@@ -5,6 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.util.Collection;
 import java.util.Set;
 
@@ -36,7 +37,13 @@ public class PropertyService {
         return propertyMapper.findById(id);
     }
 
-    public void insert(Property property) {
+    public void insert(Property property) throws NotValidException {
+        int scale = BigDecimal.valueOf(property.getRentPrice()).scale();
+
+        if (scale > 2) {
+            throw new NotValidException("rentPrice max 2 decimal places");
+        }
+
         propertyMapper.insert(property);
         log.info("CREATED: {}", property.getId());
     }

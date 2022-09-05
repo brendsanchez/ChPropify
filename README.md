@@ -23,4 +23,8 @@ If you are not familiar with Flyway migrations, the database seed is `src/main/r
 
 
 comments about code => 
-* se usa el encapsulamiento ya que los atributos estaban expuesto
+* exposed attributes are encapsulated
+* create endpoints
+* validations in class Property by annotations
+* calculations inside PropertyReport's class
+* service class unit tests because that is where the main logic is
